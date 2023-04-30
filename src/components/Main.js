@@ -12,7 +12,7 @@ export default function Main({onEditProfile, onEditAvatar, onAddPlace, onCardCli
     Promise.all([api.getProfileInfo(), api.getCards()])
     .then(([user, card]) => {
     setUserName(user.name);
-    setUserJob(user.job);
+    setUserJob(user.about);
     setUserAvatar(user.avatar);
     setCard(card);
   })
