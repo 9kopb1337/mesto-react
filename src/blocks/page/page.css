@@ -1,9 +1,9 @@
 .page {
 	display: flex;
 	flex-direction: column;
-	background: #000;
+	background-color: #000;
 	color: #fff;
-	margin: 0 45px;
+	margin: 0 auto;
 	font-family: 'Inter', 'Arial', sans-serif;
 }
 
