@@ -48,20 +48,20 @@ export default function App() {
       <PopupWithForm name="profile" title="Редактировать профиль" isOpen={isEditProfilePopupOpen} onClickClose={closeAllPopups}>
         <label className="popup__form">
         <input id="name-input" name="name" className="popup__input popup__input_type_name" type="text"
-          placeholder="Имя" minlength="2" maxlength="40" value="" required />
+          placeholder="Имя" minLength="2" maxLength="40" required />
         <span className="name-input-error popup__item-error"></span>
         <input id="description-input" name="about" className="popup__input popup__input_type_description"
-          placeholder="Описание" type="text" minlength="2" maxlength="40" value="" required />
+          placeholder="Описание" type="text" minLength="2" maxLength="40" required />
         <span className="description-input-error popup__item-error"></span>
         </label>
       </PopupWithForm> 
       <PopupWithForm name="place" title="Новое место" isOpen={isAddPlacePopupOpen} onClickClose={closeAllPopups}>
         <label className="popup__form">
         <input id="text-input" name="name" className="popup__input popup__input_type_name"
-          placeholder="Название" type="text" minlength="2" maxlength="30" value="" required />
+          placeholder="Название" type="text" minLength="2" maxLength="30" required />
         <span className="text-input-error popup__item-error"></span>
         <input id="url-input-card" name="link" className="popup__input popup__input_type_description"
-          placeholder="Ссылка на картинку" type="url" value="" required />
+          placeholder="Ссылка на картинку" type="url" required />
         <span className="url-input-card-error popup__item-error"></span>
         </label>
       </PopupWithForm>
