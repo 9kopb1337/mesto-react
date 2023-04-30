@@ -10,11 +10,11 @@ export default function Main({onEditProfile, onEditAvatar, onAddPlace, onCardCli
 
   React.useEffect(() => {
     Promise.all([api.getProfileInfo(), api.getCards()])
-    .then(([resUser, resCard]) => {
-    setUserName(resUser.name);
-    setUserJob(resUser.job);
-    setUserAvatar(resUser.avatar);
-    setCard(resCard);
+    .then(([user, card]) => {
+    setUserName(user.name);
+    setUserJob(user.job);
+    setUserAvatar(user.avatar);
+    setCard(card);
   })
   .catch((err) => console.log(err));
   }, [])
@@ -34,8 +34,8 @@ export default function Main({onEditProfile, onEditAvatar, onAddPlace, onCardCli
         </section>
     
         <section className="elements">
-          {card.map((resCard) => (
-            <Card card={resCard} onCardClick={onCardClick} key={resCard._id} />
+          {card.map((card) => (
+            <Card card={card} onCardClick={onCardClick} key={card._id} />
           ))}
         </section>
     
