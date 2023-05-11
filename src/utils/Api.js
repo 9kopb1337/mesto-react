@@ -82,6 +82,14 @@ class Api {
       headers: this._headers,
     }).then((res) => this._checkRes(res));
   }
+
+  toggleLike(cardId, isLiked){
+    if (isLiked){
+      return this.removeLikeCard(cardId);
+    } else {
+      return this.likeCard(cardId);
+    }
+  }
 }
 
 export const api = new Api(apiRes);

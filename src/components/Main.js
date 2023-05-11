@@ -1,38 +1,31 @@
 import React from "react";
-import { api } from "../utils/Api.js";
 import Card from "./Card.js";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
 export default function Main({
   onEditProfile,
   onEditAvatar,
   onAddPlace,
+  card,
   onCardClick,
+  onCardLike,
+  onCardDelete,
 }) {
-  const [userName, setUserName] = React.useState("");
-  const [userJob, setUserJob] = React.useState("");
-  const [userAvatar, setUserAvatar] = React.useState("");
-  const [card, setCard] = React.useState([]);
-
-  React.useEffect(() => {
-    Promise.all([api.getProfileInfo(), api.getCards()])
-      .then(([user, card]) => {
-        setUserName(user.name);
-        setUserJob(user.about);
-        setUserAvatar(user.avatar);
-        setCard(card);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <main className="main">
       <section className="profile">
         <div className="profile__avatar" onClick={onEditAvatar}>
-          <img className="profile__photo" src={userAvatar} alt={userName} />
+          <img
+            className="profile__photo"
+            src={currentUser.avatar}
+            alt={currentUser.name}
+          />
         </div>
         <div className="profile__info">
-          <h1 className="profile__name">{userName}</h1>
-          <p className="profile__description">{userJob}</p>
+          <h1 className="profile__name">{currentUser.name}</h1>
+          <p className="profile__description">{currentUser.about}</p>
           <button
             className="button profile__button profile__button_act_edit"
             type="button"
@@ -48,7 +41,13 @@ export default function Main({
 
       <section className="elements">
         {card.map((card) => (
-          <Card card={card} onCardClick={onCardClick} key={card._id} />
+          <Card
+            card={card}
+            key={card._id}
+            onCardClick={onCardClick}
+            onCardLike={onCardLike}
+            onCardDelete={onCardDelete}
+          />
         ))}
       </section>
     </main>
